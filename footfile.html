@@ -1,5 +1,38 @@
 <!--HTML document to define the layout of the foot-->
 </div>
+
 <div id="footer">
-    Copyright &copy; workedUp, 2014
+   Copyright &copy; workedUp, 2017
 </div>
+
+<script type="text/javascript">
+
+        if(window.location == "http://workedup.cybertechparadise.com/index.php"){
+            document.getElementById("homeLink").className = "active";
+            document.getElementById("basketLink").className = "";
+            document.getElementById("loginLink").className = "";
+            document.getElementById("registerLink").className = "";
+        }
+
+        if(window.location == "http://workedup.cybertechparadise.com/basket.php"){
+            document.getElementById("homeLink").className = "";
+            document.getElementById("basketLink").className = "active";
+            document.getElementById("loginLink").className = "";
+            document.getElementById("registerLink").className = "";
+        }
+
+        if(window.location == "http://workedup.cybertechparadise.com/login.php"){
+            document.getElementById("homeLink").className = "";
+            document.getElementById("basketLink").className = "";
+            document.getElementById("loginLink").className = "active";
+            document.getElementById("registerLink").className = "";
+        }
+
+        if(window.location == "http://workedup.cybertechparadise.com/register.php"){
+            document.getElementById("homeLink").className = "";
+            document.getElementById("basketLink").className = "";
+            document.getElementById("loginLink").className = "";
+            document.getElementById("registerLink").className = "active";
+        }
+
+</script>
