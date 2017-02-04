@@ -7,7 +7,6 @@ echo "<link rel=stylesheet type=text/css href=mystylesheet.css>";
 
 //display window title
 echo "<title>" . $pagename . "</title>";
-echo '<h1>Hello, I'm Gayashan</h1>';
 
 //include head layout
 include("headfile.html");
