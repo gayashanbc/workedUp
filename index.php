@@ -23,8 +23,10 @@ $exeSQL = mysql_query($SQL) or die (mysql_error());
 while ($arrayprod = mysql_fetch_array($exeSQL)) {
     echo "<br>";
 //make each product a link to the next page and pass the product id to the next page by URL //concatenate a string of characters u_prodid which carries the value of the actual id
+    echo "<p><a href=prodinfo.php?u_prodid=" . $arrayprod['prodId'] . ">";
     echo $arrayprod['prodName'];
     echo "<br>";
+    echo "</a></p>";
     echo "<br><br>";
     echo "<img src=Images/" . $arrayprod['prodPicName'] . ">";
     echo "<hr>";
