@@ -7,7 +7,7 @@
     border-color: #9E9EAE;
 }
 
-#container p{
+#container p {
     font-family: Exo 2;
     font-size: 1.5em;
 }
@@ -28,7 +28,7 @@
 #header img {
     padding-left: 685px;
     padding-top: 18px;
-    background-position:center;
+    background-position: center;
 }
 
 #navigation {
@@ -63,7 +63,7 @@
     color: #fff
 }
 
-.active{
+.active {
     background: Peru;
     color: #fff
 }
@@ -109,4 +109,19 @@ a:visited {
 a:hover {
     color: #7A7ACC;
     text-decoration: none;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 3px solid #008F6B;
+}
+
+th {
+    color: #008F6B;
+}
+
+td {
+    padding: 5px;
+    text-align: left;
+    color: #008F6B;
 }
