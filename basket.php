@@ -1,6 +1,17 @@
 <?php
+session_start();
+//require_once('db.php');
+
+$connection = mysqli_connect('localhost', 'cybertec_basic', 'ID961160367', 'cybertec_hexis');
+if (mysqli_connect_errno()) {
+    die('error' . mysqli_connect_error());
+}
+
+$total = 0;
+
 //create a variable called $pagename which contains the actual name of the page
-$pagename = "Basket";
+$pagename = "Ordering Basket";
+
 
 //Google Web Fonts
 echo "<link href='//fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>";
@@ -15,11 +26,80 @@ echo "<title>" . $pagename . "</title>";
 //include head layout
 include("headfile.html");
 
+if (isset($_POST['h_prodid']) && isset($_POST['p_quantity'])) {
+
+    $newprodid = $_POST['h_prodid'];
+    $reququantity = $_POST['p_quantity'];
+
+
+    if (isset($_SESSION['basket'])) {
+        if (isset($_SESSION['basket'][$newprodid])) {
+            $_SESSION['basket'][$newprodid] += $reququantity;
+        } else {
+            $_SESSION['basket'][$newprodid] = $reququantity;
+        }
+
+    } else {
+        $_SESSION['basket'] = [];
+        $_SESSION['basket'][$newprodid] = $reququantity;
+    }
+
+    $message = 'Your basket has been updated.';
+
+} else {
+    if (empty($_SESSION['basket'])) {
+        $message = 'Empty basket.';
+    } else {
+        $message = 'Existing basket.';
+    }
+}
+
 echo "<p></p>";
 //display name of the page and some random text
 echo "<h2>" . $pagename . "</h2>";
-echo "<p> Text Here</p>";
+echo "<p>" . $message . "</p>";
 
+if (!empty($_SESSION['basket'])) {
+    ?>
+
+    <table border=2>
+        <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <?php
+        foreach ($_SESSION['basket'] as $key => $value) {
+            $query = "SELECT * FROM product WHERE prodId = '{$key}'";
+            $result = mysqli_query($connection, $query);
+            $row = mysqli_fetch_row($result);
+            $total += ($row[4] * $value);
+            ?>
+            <tr>
+                <td><?php echo $row[1]; ?></td>
+                <td><?php echo $row[4]; ?></td>
+                <td><?php echo $value; ?></td>
+                <td><?php echo($row[4] * $value); ?></td>
+            </tr>
+        <?php } ?>
+        <tr>
+            <th colspan=3>Total</th>
+            <th>GBP <?php echo $total; ?></th>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <a href='clearbasket.php'>Clear basket</a>
+
+    <?php
+}
 //include head layout
 include("footfile.html");
+mysqli_close($connection);
 ?>
