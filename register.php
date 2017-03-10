@@ -1,4 +1,5 @@
 <?php
+session_start();
 //create a variable called $pagename which contains the actual name of the page
 $pagename = "Register";
 
@@ -18,8 +19,50 @@ include("headfile.html");
 echo "<p></p>";
 //display name of the page and some random text
 echo "<h2>" . $pagename . "</h2>";
-echo "<p> Text Here</p>";
+?>
 
+<form action="getregister.php" method="post">
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" name="userFName" required/></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" name="userSName" required/></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" name="userAddress" required/></td>
+        </tr>
+        <tr>
+            <td>Postcode</td>
+            <td><input type="text" name="userPostcode" required/></td>
+        </tr>
+        <tr>
+            <td>Tel No</td>
+            <td><input type="number" name="userTelNo" required/></td>
+        </tr>
+        <tr>
+            <td>Email Address</td>
+            <td><input type="email" name="userEmail" required/></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="userPassword" required/></td>
+        </tr>
+        <tr>
+            <td>Confirm Password</td>
+            <td><input type="password" name="userRePassword" required/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="submit" value="Register"/></td>
+            <td><input type="reset" value="Clear Form"/></td>
+        </tr>
+    </table>
+</form>
+
+<?php
 //include head layout
 include("footfile.html");
 ?>

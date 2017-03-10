@@ -113,15 +113,24 @@ a:hover {
 
 table, th, td {
     border-collapse: collapse;
-    border: 3px solid #008F6B;
+    border: 3px solid maroon;
 }
 
 th {
-    color: #008F6B;
+    color: maroon;
+    font-size: 2em;
+    padding: 5px;
 }
 
 td {
     padding: 5px;
     text-align: left;
-    color: #008F6B;
+    font-size: 2em;
+    color: maroon;
+    padding: 5px;
+}
+
+p {
+    font-family: Helvetica;
+    font-size: 2em;
 }

@@ -96,7 +96,8 @@ if (!empty($_SESSION['basket'])) {
     </table>
     <br/>
     <a href='clearbasket.php'>Clear basket</a>
-
+    <p>New workedUp Customers <a href="register.php">Register</a></p>
+    <p>Registered workedUp Members <a href="login.php">Login</a></p>
     <?php
 }
 //include head layout

@@ -34,11 +34,11 @@ $exeprodSQL = mysql_query($prodSQL) or die(mysql_error());
 //create array of records & populate it with result of the execution of the SQL query 
 $thearrayprod = mysql_fetch_array($exeprodSQL);
 //display product name in capital letters 
-echo "<p><center><b>" . strtoupper($thearrayprod['prodName']) . "</b></center>";
+echo "<h3 style='text-align:center;font-size:1.8em;'>" . strtoupper($thearrayprod['prodName']);
 echo "<br>";
-echo "</a></p>";
+echo "</h3>";
 echo "<br><br>";
-echo "<img src=Images/" . $thearrayprod['prodPicName'] . "><br>";
+echo "<img src=Images/" . $thearrayprod['prodPicName'] . "><br><p>";
 echo $thearrayprod['prodDescrip'] . "<br><br>";
 echo $thearrayprod['prodPrice'] . " Euros<br><br>";
 echo $thearrayprod['prodQuantity'] . "</center></p>";
