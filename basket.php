@@ -1,11 +1,6 @@
 <?php
 session_start();
-//require_once('db.php');
-
-$connection = mysqli_connect('localhost', 'cybertec_basic', 'ID961160367', 'cybertec_hexis');
-if (mysqli_connect_errno()) {
-    die('error' . mysqli_connect_error());
-}
+include('db.php');
 
 $total = 0;
 
@@ -77,8 +72,8 @@ if (!empty($_SESSION['basket'])) {
         <?php
         foreach ($_SESSION['basket'] as $key => $value) {
             $query = "SELECT * FROM product WHERE prodId = '{$key}'";
-            $result = mysqli_query($connection, $query);
-            $row = mysqli_fetch_row($result);
+            $result = mysql_query($query) or die('error'.mysql_error());
+            $row = mysql_fetch_array($result);
             $total += ($row[4] * $value);
             ?>
             <tr>
@@ -102,5 +97,5 @@ if (!empty($_SESSION['basket'])) {
 }
 //include head layout
 include("footfile.html");
-mysqli_close($connection);
+mysql_close($connection);
 ?>

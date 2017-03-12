@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+require_once('db.php');
 //create a variable called $pagename which contains the actual name of the page
 $pagename = "Register Confirmation";
 
@@ -36,10 +38,9 @@ if (isset($_POST['submit'])) {
         $message = 'Error: Passord does not match<br><p> Go back to <a href="register.php">Register</a></p>';
     } else {
 
-        $connection = mysqli_connect('localhost', 'cybertec_basic', 'ID961160367', 'cybertec_hexis');
         $query = "INSERT INTO users(userFName,userSName,userAddress,userPostcode,userTelNo,userEmail,userPassword) VALUES('{$userFName}','{$userSName}','{$userAddress}','{$userPostcode}','{$userTelNo}','{$userEmail}','{$userPassword}')";
 
-        $result = mysqli_query($connection, $query);
+        $result = mysql_query($query);
         if ($result == false) {
             $message = 'Error: There is an existing user with the same email address<br><p> Go back to <a href="register.php">Register</a></p>';
 
@@ -48,7 +49,7 @@ if (isset($_POST['submit'])) {
             $color = "green";
         }
 
-        mysqli_close($connection);
+        mysql_close($connection);
     }
 } else {
     $message = 'Error: Form data was not submitted!';
