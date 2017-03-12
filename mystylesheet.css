@@ -134,3 +134,7 @@ p {
     font-family: Helvetica;
     font-size: 2em;
 }
+
+body{
+    background-image: url("./Images/sun.jpg");
+}
