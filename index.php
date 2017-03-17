@@ -1,4 +1,5 @@
 <?php
+session_start();
 //include a db.php file to connect to database
 include("db.php");
 //create a variable called $pagename which contains the actual name of the page
@@ -13,7 +14,7 @@ echo "<link rel=stylesheet type=text/css href=mystylesheet.css>";
 echo "<title>" . $pagename . "</title>";
 //include head layout
 include("headfile.html");
-echo "<p></p>";
+require_once('detectlogin.php');
 //display name of the page and some text
 echo "<h2>" . $pagename . "</h2>";
 echo "<p> Amazing products for your home, for your work, for you!</p> <br><br><hr>";

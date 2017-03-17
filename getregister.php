@@ -34,25 +34,33 @@ if (isset($_POST['submit'])) {
     $userPassword = $_POST['userPassword'];
     $userRePassword = $_POST['userRePassword'];
 
-    if ($userPassword != $userRePassword) {
-        $message = 'Error: Passord does not match<br><p> Go back to <a href="register.php">Register</a></p>';
-    } else {
-
-        $query = "INSERT INTO users(userFName,userSName,userAddress,userPostcode,userTelNo,userEmail,userPassword) VALUES('{$userFName}','{$userSName}','{$userAddress}','{$userPostcode}','{$userTelNo}','{$userEmail}','{$userPassword}')";
-
-        $result = mysql_query($query);
-        if ($result == false) {
-            $message = 'Error: There is an existing user with the same email address<br><p> Go back to <a href="register.php">Register</a></p>';
-
+    if (!empty($userFName) && !empty($userSName) && !empty($userAddress) && !empty($userPostcode) && !empty($userTelNo) && !empty($userEmail) && !empty($userPassword) && !empty($userRePassword)) {
+        if ($userPassword != $userRePassword) {
+            $message = 'Error: Passord does not match<br> Go back to <a href="register.php">Register</a>';
+        } elseif (preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/", $userEmail) == 0) {
+            $message = 'Error: Email not valid<br> Go back to <a href="register.php">Register</a>';
         } else {
-            $message = 'Registration succesful';
-            $color = "green";
+
+            $query = "INSERT INTO users(userFName,userSName,userAddress,userPostcode,userTelNo,userEmail,userPassword) VALUES('{$userFName}','{$userSName}','{$userAddress}','{$userPostcode}','{$userTelNo}','{$userEmail}','{$userPassword}')";
+
+            $result = mysql_query($query);
+            if ($result == false) {
+                $message = 'Error: There is an existing user with the same email address<br> Go back to <a href="register.php">Register</a>';
+
+            } else {
+                $message = 'Registration succesful';
+                $color = "green";
+            }
+
+            mysql_close($connection);
         }
 
-        mysql_close($connection);
+    } else {
+        $message = 'Error: All fields are mandatory<br> Go back to <a href="register.php">Register</a>';
     }
+
 } else {
-    $message = 'Error: Form data was not submitted!';
+    $message = 'Error: Form data was not submitted!<br> Go back to <a href="register.php">Register</a>';
 }
 
 echo "<p><h3 style='color:" . $color . "'>" . $message . "</h3></p>";

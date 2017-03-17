@@ -20,6 +20,7 @@ echo "<title>" . $pagename . "</title>";
 
 //include head layout
 include("headfile.html");
+require_once('detectlogin.php');
 
 if (isset($_POST['h_prodid']) && isset($_POST['p_quantity'])) {
 

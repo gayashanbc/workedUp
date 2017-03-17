@@ -25,35 +25,35 @@ echo "<h2>" . $pagename . "</h2>";
     <table>
         <tr>
             <td>First Name</td>
-            <td><input type="text" name="userFName" required/></td>
+            <td><input type="text" name="userFName"/></td>
         </tr>
         <tr>
             <td>Last Name</td>
-            <td><input type="text" name="userSName" required/></td>
+            <td><input type="text" name="userSName"/></td>
         </tr>
         <tr>
             <td>Address</td>
-            <td><input type="text" name="userAddress" required/></td>
+            <td><input type="text" name="userAddress"/></td>
         </tr>
         <tr>
             <td>Postcode</td>
-            <td><input type="text" name="userPostcode" required/></td>
+            <td><input type="text" name="userPostcode"/></td>
         </tr>
         <tr>
             <td>Tel No</td>
-            <td><input type="number" name="userTelNo" required/></td>
+            <td><input type="number" name="userTelNo"/></td>
         </tr>
         <tr>
             <td>Email Address</td>
-            <td><input type="email" name="userEmail" required/></td>
+            <td><input type="text" name="userEmail"/></td>
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type="password" name="userPassword" required/></td>
+            <td><input type="password" name="userPassword"/></td>
         </tr>
         <tr>
             <td>Confirm Password</td>
-            <td><input type="password" name="userRePassword" required/></td>
+            <td><input type="password" name="userRePassword"/></td>
         </tr>
         <tr>
             <td><input type="submit" name="submit" value="Register"/></td>

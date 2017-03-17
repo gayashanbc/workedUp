@@ -1,4 +1,5 @@
 <?php
+session_start();
 //include a db.php file to connect to database
 include("db.php");
 
@@ -17,6 +18,7 @@ echo "<title>" . $pagename . "</title>";
 
 //include head layout
 include("headfile.html");
+require_once('detectlogin.php');
 
 echo "<p></p>";
 //display name of the page and some random text

@@ -1,8 +1,20 @@
 <?php
 session_start();
-unset($_SESSION['basket']);
+if (isset($_SESSION['c_userId'])) {
+    if (isset($_SESSION['basket'])) {
+        unset($_SESSION['basket']);
+    }
+    unset($_SESSION['c_userId']);
+    unset($_SESSION['c_userFName']);
+    unset($_SESSION['c_userSName']);
+    session_destroy();
+    session_abort();
+    $message = "You have successfully logged out";
+} else {
+    $message = "You are cureently not logged in";
+}
 //create a variable called $pagename which contains the actual name of the page
-$pagename = "Clear Basket";
+$pagename = "Log Out";
 
 //Google Web Fonts
 echo "<link href='//fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>";
@@ -20,7 +32,7 @@ include("headfile.html");
 require_once('detectlogin.php');
 //display name of the page and some random text
 echo "<h2>" . $pagename . "</h2>";
-echo "<p> Ordering basket now clear</p>";
+echo "<p>.$message.</p>";
 
 //include head layout
 include("footfile.html");
