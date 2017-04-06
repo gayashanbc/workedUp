@@ -41,8 +41,8 @@ if (isset($_POST['submit'])) {
 
             } else {
                 $user_details = mysql_fetch_array($result);
-                $pasword = $user_details[0];
-                if ($pasword == $userPassword) {
+                $paswordHash = $user_details[0];
+                if (password_verify($userPassword, $paswordHash)) {
                     $_SESSION['c_userId'] = $user_details[1];
                     $_SESSION['c_userFName'] = $user_details[2];
                     $_SESSION['c_userSName'] = $user_details[3];

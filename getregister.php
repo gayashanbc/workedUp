@@ -40,8 +40,8 @@ if (isset($_POST['submit'])) {
         } elseif (preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/", $userEmail) == 0) {
             $message = 'Error: Email not valid<br> Go back to <a href="register.php">Register</a>';
         } else {
-
-            $query = "INSERT INTO users(userFName,userSName,userAddress,userPostcode,userTelNo,userEmail,userPassword) VALUES('{$userFName}','{$userSName}','{$userAddress}','{$userPostcode}','{$userTelNo}','{$userEmail}','{$userPassword}')";
+            $passwordHash = password_hash($userPassword, PASSWORD_BCRYPT);
+            $query = "INSERT INTO users(userFName,userSName,userAddress,userPostcode,userTelNo,userEmail,userPassword) VALUES('{$userFName}','{$userSName}','{$userAddress}','{$userPostcode}','{$userTelNo}','{$userEmail}','{$passwordHash}')";
 
             $result = mysql_query($query);
             if ($result == false) {
