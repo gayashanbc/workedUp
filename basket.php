@@ -73,7 +73,7 @@ if (!empty($_SESSION['basket'])) {
         <?php
         foreach ($_SESSION['basket'] as $key => $value) {
             $query = "SELECT * FROM product WHERE prodId = '{$key}'";
-            $result = mysql_query($query) or die('error'.mysql_error());
+            $result = mysql_query($query) or die('error' . mysql_error());
             $row = mysql_fetch_array($result);
             $total += ($row[4] * $value);
             ?>
@@ -92,9 +92,17 @@ if (!empty($_SESSION['basket'])) {
     </table>
     <br/>
     <a href='clearbasket.php'>Clear basket</a>
-    <p>New workedUp Customers <a href="register.php">Register</a></p>
-    <p>Registered workedUp Members <a href="login.php">Login</a></p>
     <?php
+    if (isset($_SESSION['c_userId'])) {
+        ?>
+        <p>To finalize your order <a href="checkout.php">Checkout</a></p>
+        <?php
+    } else {
+        ?>
+        <p>New workedUp Customers <a href="register.php">Register</a></p>
+        <p>Registered workedUp Members <a href="login.php">Login</a></p>
+        <?php
+    }
 }
 //include head layout
 include("footfile.html");
